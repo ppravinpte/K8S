@@ -1,0 +1,35 @@
+# Kubernetes Deployment 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  #minReadySeconds: 30  # min num of seconds for which newly created pod should be ready.
+  selector:
+    matchLabels:
+      app: webapp  
+  replicas: 2
+  template: #template for the pods
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        #image: richardchesterwood/k8s-fleetman-webapp-angular:releaAAAAAAse0 # incorrect image name to see prev replica still runs to keep site alive
+        #image: richardchesterwood/k8s-fleetman-webapp-angular:release0  # correct first version
+        image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5 # latest version
+
+# add document seperator.
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fleetman-queue
+  labels: 
+    app: queue
+    release: "1"
+spec:
+  containers:
+  - name: fleetman-queue
+    image: richardchesterwood/k8s-fleetman-queue:release1
