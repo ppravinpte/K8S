@@ -1,0 +1,19 @@
+# ReplicaSet called "webapp" manages any pod where label exist app: webapp value
+# Two instance of pods are running line 1 to 10.  
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: webapp
+spec:
+  selector:
+    matchLabels:
+      app: webapp  
+  replicas: 2
+  template: #template for the pods - Pod definition - line 12-19
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5

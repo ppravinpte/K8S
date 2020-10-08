@@ -1,0 +1,1 @@
+# Example of Replicasets of Kubernetes with pod and service file.
