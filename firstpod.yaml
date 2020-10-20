@@ -1,0 +1,11 @@
+# Note: This is sample of pod creation manual process. It's not recommonded in real time.
+apiVersion: v1
+kind: Pod          # type of object
+metadata:
+  name: webapp     # name of pod
+spec:              # This section list containers
+  containers:
+  - name: webapp   # name of container, not really matters
+    image: richardchesterwood/k8s-fleetman-webapp-angular:release0       # image for container
+    #command and Argument - In above image, nginx is using port 80 and most of containers comes with command
+    #so these two options are not required though exist for container. 
