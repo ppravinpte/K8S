@@ -34,4 +34,4 @@
    For this changed release version in service, it uses second pod with matching label of release: '0-5'.
 
 4) Type: Nodeport is used in service to access web-browser. nodePort number > 30000 used to test it locally.
-- Open browser and type on url - <Minikubeip>:<nodePort-Number>
+- Open browser and type on url - http://Minikubeip:nodeportnumber
