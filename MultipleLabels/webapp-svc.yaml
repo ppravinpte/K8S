@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-webappsvc   # name is very imp. Other services looks for this service through name if requires.
+spec:
+  # This defines which pods are going to be represented by this service.
+  # The service becomes a network end point for either other services
+  # or may be external users to connect to (for eg. browser)
+  selector:
+    appl: webappl            # key:value pair must match with pod defined in seperate yaml file.
+    release: '0'             # release 0 as additional label introduced.
+    
+  # Which ports are exposing through this service.
+  # Accept traffic on port 80. Forward traffic to port 80 on container.
+  # target port defaults to value whatever is being used for port.
+  ports: 
+    - name: http             # name is just to inform what type of traffic is it allowing.
+      port: 80
+      #targetPort: 80        # optional and inherit value specified in port so not mentioned here.
+      nodePort: 30086        #only aoolicable for Nodeport type to list port allowed to access browser on. Must be > 30000.
+
+  type: NodePort

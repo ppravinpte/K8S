@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod                    # type of object
+metadata:
+  name: webapp-rel0          # name of pod
+  labels:
+    appl: webappl            # Matching key:value pair exist in service select this pod to connect.
+    release: '0'             # service with release:0 picks up this pod. i.e webapp-rel0
+spec:                        # This section list containers
+  containers:
+  - name: webapp             # name of container, not really matters
+    image: richardchesterwood/k8s-fleetman-webapp-angular:release0       # image for container
+    #command and Argument - In above image, nginx is using port 80 and most of containers comes with command
+    #so these two options are not required though exist for container.
+
+# document seperator '---' is used in yaml to differentiate multiple pods. Below is pod with "release 0-5" image
+---
+apiVersion: v1
+kind: Pod                   
+metadata:
+  name: webapp-rel0-5          
+  labels:
+    appl: webappl
+    release: '0-5'          # service with release:0-5 picks up this pod. i.e webapp-rel0-5
+spec:                       
+  containers:
+  - name: webapp            
+    image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5   # image release with net version of 0-5.
