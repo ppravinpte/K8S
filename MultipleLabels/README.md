@@ -35,3 +35,4 @@
 
 4) Type: Nodeport is used in service to access web-browser. nodePort number > 30000 used to test it locally.
 - Open browser and type on url - <Minikubeip>:<nodePort-Number>
+   
