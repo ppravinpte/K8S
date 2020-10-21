@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet             # type of object
+metadata:
+  name: webrp                # name of replica
+spec:
+  replicas: 1                # number of instances of pods are running
+  selector:
+    matchLabels:
+      application: webappln
+  template:
+    metadata:
+      labels:
+        application: webappln    # Matching key:value pair exist in service select this pod to connect.
+    spec:                        # This section list containers
+      containers:
+      - name: webapp             # name of container, not really matters
+        image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5       # image for container
+        #command and Argument - In above image, nginx is using port 80 and most of containers comes with command
+        #so these two options are not required though exist for container. 
