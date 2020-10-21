@@ -8,7 +8,8 @@ spec:
   # or may be external users to connect to (for eg. browser)
   selector:
     appl: webappl            # key:value pair must match with pod defined in seperate yaml file.
-    release: '0'             # release 0 as additional label introduced.
+    #release: '0'            # release 0 as additional label introduced.
+    release: '0-5'           # release 0-5 as additional label introduced.
     
   # Which ports are exposing through this service.
   # Accept traffic on port 80. Forward traffic to port 80 on container.
